@@ -1,4 +1,4 @@
-import { definePlugin, type InputProps, type ObjectInputProps } from 'sanity';
+import { definePlugin, type InputProps } from 'sanity';
 
 import { OsmGeopointInput } from './OsmGeopointInput';
 import type { GeopointValue } from './types';
@@ -15,7 +15,9 @@ export const osmInput = definePlugin({
         if (props.schemaType.name === 'geopoint') {
           return (
             <OsmGeopointInput
-              {...(props as ObjectInputProps<GeopointValue>)}
+              value={props.value as GeopointValue | undefined}
+              readOnly={props.readOnly}
+              onChange={props.onChange}
             />
           );
         }

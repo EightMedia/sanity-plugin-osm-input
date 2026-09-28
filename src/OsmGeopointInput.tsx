@@ -8,12 +8,20 @@ import {
   type ChangeEvent,
   type JSX,
 } from 'react';
-import { set, unset, type ObjectInputProps } from 'sanity';
+import { set, unset } from 'sanity';
 
 import { ensureOsmInputStyles } from './styles';
 import { searchPlaces } from './searchPlaces';
 import type { GeopointValue, PlaceSuggestion } from './types';
 import { useOsmMap } from './useOsmMap';
+
+/** Props used by the input — kept free of Sanity’s `ObjectInputProps` so peer type versions don’t clash across linked packages. */
+export type OsmGeopointInputProps = {
+  value?: GeopointValue;
+  readOnly?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- avoid importing Sanity patch types into the public .d.ts
+  onChange: (patch: any) => void;
+};
 
 function isGeopoint(value: unknown): value is GeopointValue {
   if (!value || typeof value !== 'object') {
@@ -27,9 +35,7 @@ function isGeopoint(value: unknown): value is GeopointValue {
  * Studio input for `geopoint`: OSM tiles, Photon place search, draggable pin.
  * Stores the native Sanity geopoint shape — no Google API key.
  */
-export function OsmGeopointInput(
-  props: ObjectInputProps<GeopointValue>,
-): JSX.Element {
+export function OsmGeopointInput(props: OsmGeopointInputProps): JSX.Element {
   const { value, onChange, readOnly } = props;
   const mapId = useId();
   const containerRef = useRef<HTMLDivElement | null>(null);
