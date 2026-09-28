@@ -1,12 +1,87 @@
-const STYLE_ID = 'sanity-plugin-osm-input-styles';
+const STYLE_ID = 'sanity-osm-input-styles';
 
 const CSS = `
+.sanity-osm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.sanity-osm__search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.sanity-osm__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--card-border-color, #ccc);
+  border-radius: 4px;
+  background: var(--card-bg-color, #fff);
+  color: var(--card-fg-color, inherit);
+  font: inherit;
+}
+.sanity-osm__input:disabled {
+  opacity: 0.6;
+}
+.sanity-osm__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--card-muted-fg-color, #667);
+}
+.sanity-osm__error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--card-badge-critical-fg-color, #b00020);
+}
+.sanity-osm__suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem;
+  border: 1px solid var(--card-border-color, #ccc);
+  border-radius: 4px;
+  background: var(--card-bg-color, #fff);
+}
+.sanity-osm__suggestion {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.4rem 0.5rem;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.sanity-osm__suggestion:hover,
+.sanity-osm__suggestion:focus-visible {
+  background: var(--card-focus-ring-color, #e8eefc);
+  outline: none;
+}
 .sanity-osm-map {
   height: 280px;
   width: 100%;
   border-radius: 4px;
   overflow: hidden;
   z-index: 0;
+}
+.sanity-osm__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.sanity-osm__clear {
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--card-badge-critical-fg-color, #b00020);
+  font: inherit;
+  cursor: pointer;
 }
 .sanity-osm-pin {
   background: transparent;

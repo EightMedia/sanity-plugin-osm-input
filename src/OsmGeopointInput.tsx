@@ -1,4 +1,3 @@
-import { Box, Button, Card, Flex, Stack, Text, TextInput } from '@sanity/ui';
 import {
   useCallback,
   useEffect,
@@ -15,11 +14,14 @@ import { searchPlaces } from './searchPlaces';
 import type { GeopointValue, PlaceSuggestion } from './types';
 import { useOsmMap } from './useOsmMap';
 
-/** Props used by the input — kept free of Sanity’s `ObjectInputProps` so peer type versions don’t clash across linked packages. */
+/**
+ * Props used by the input — kept free of Sanity’s `ObjectInputProps` so peer
+ * type versions don’t clash across packages / registries.
+ */
 export type OsmGeopointInputProps = {
   value?: GeopointValue;
   readOnly?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- avoid importing Sanity patch types into the public .d.ts
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- avoid Sanity patch types in public .d.ts
   onChange: (patch: any) => void;
 };
 
@@ -34,6 +36,7 @@ function isGeopoint(value: unknown): value is GeopointValue {
 /**
  * Studio input for `geopoint`: OSM tiles, Photon place search, draggable pin.
  * Stores the native Sanity geopoint shape — no Google API key.
+ * Uses plain HTML (no `@sanity/ui`) so it works across Sanity UI v4/v5.
  */
 export function OsmGeopointInput(props: OsmGeopointInputProps): JSX.Element {
   const { value, onChange, readOnly } = props;
@@ -129,9 +132,11 @@ export function OsmGeopointInput(props: OsmGeopointInputProps): JSX.Element {
   const point = isGeopoint(value) ? value : undefined;
 
   return (
-    <Stack gap={3}>
-      <Stack gap={2}>
-        <TextInput
+    <div className="sanity-osm">
+      <div className="sanity-osm__search">
+        <input
+          className="sanity-osm__input"
+          type="search"
           value={query}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             setQuery(event.currentTarget.value)
@@ -143,59 +148,56 @@ export function OsmGeopointInput(props: OsmGeopointInputProps): JSX.Element {
           aria-expanded={suggestions.length > 0}
         />
         {searching ? (
-          <Text size={1} muted>
-            Searching…
-          </Text>
+          <p className="sanity-osm__hint">Searching…</p>
         ) : null}
         {searchError ? (
-          <Text size={1} style={{ color: 'var(--card-badge-critical-fg-color)' }}>
-            {searchError}
-          </Text>
+          <p className="sanity-osm__error">{searchError}</p>
         ) : null}
         {suggestions.length > 0 ? (
-          <Card
+          <ul
             id={`${mapId}-suggestions`}
-            border
-            radius={2}
-            padding={1}
+            className="sanity-osm__suggestions"
             role="listbox"
           >
-            <Stack gap={1}>
-              {suggestions.map((suggestion) => (
-                <Button
-                  key={suggestion.id}
-                  mode="bleed"
-                  text={suggestion.label}
-                  justify="flex-start"
-                  fontSize={1}
+            {suggestions.map((suggestion) => (
+              <li key={suggestion.id}>
+                <button
+                  type="button"
+                  className="sanity-osm__suggestion"
                   disabled={readOnly}
                   onClick={() => selectSuggestion(suggestion)}
-                />
-              ))}
-            </Stack>
-          </Card>
+                >
+                  {suggestion.label}
+                </button>
+              </li>
+            ))}
+          </ul>
         ) : null}
-      </Stack>
+      </div>
 
-      <Box>
-        <div
-          ref={containerRef}
-          className="sanity-osm-map"
-          role="application"
-          aria-label="Map"
-        />
-      </Box>
+      <div
+        ref={containerRef}
+        className="sanity-osm-map"
+        role="application"
+        aria-label="Map"
+      />
 
-      <Flex align="center" justify="space-between" gap={3}>
-        <Text size={1} muted>
+      <div className="sanity-osm__footer">
+        <p className="sanity-osm__hint">
           {point
             ? `${point.lat.toFixed(5)}, ${point.lng.toFixed(5)}`
             : 'Click the map or search to set a location'}
-        </Text>
+        </p>
         {point && !readOnly ? (
-          <Button mode="ghost" text="Clear" tone="critical" onClick={clear} />
+          <button
+            type="button"
+            className="sanity-osm__clear"
+            onClick={clear}
+          >
+            Clear
+          </button>
         ) : null}
-      </Flex>
-    </Stack>
+      </div>
+    </div>
   );
 }
