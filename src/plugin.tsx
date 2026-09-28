@@ -8,7 +8,7 @@ import type { GeopointValue } from './types';
  * Prefer the named export on individual fields when only some maps should use OSM.
  */
 export const osmInput = definePlugin({
-  name: 'sanity-osm-input',
+  name: 'sanity-plugin-osm-input',
   form: {
     components: {
       input: (props: InputProps) => {

@@ -1,4 +1,4 @@
-const STYLE_ID = 'sanity-osm-input-styles';
+const STYLE_ID = 'sanity-plugin-osm-input-styles';
 
 const CSS = `
 .sanity-osm-map {

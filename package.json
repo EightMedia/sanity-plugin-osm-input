@@ -1,5 +1,5 @@
 {
-  "name": "@eightmedia/sanity-osm-input",
+  "name": "@eightmedia/sanity-plugin-osm-input",
   "version": "0.1.0",
   "description": "Sanity Studio geopoint input with OpenStreetMap tiles and place search — no Google API key",
   "license": "MIT",
@@ -7,12 +7,12 @@
   "author": "EightMedia <info@eight.nl>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EightMedia/sanity-osm-input.git"
+    "url": "git+https://github.com/EightMedia/sanity-plugin-osm-input.git"
   },
   "bugs": {
-    "url": "https://github.com/EightMedia/sanity-osm-input/issues"
+    "url": "https://github.com/EightMedia/sanity-plugin-osm-input/issues"
   },
-  "homepage": "https://github.com/EightMedia/sanity-osm-input#readme",
+  "homepage": "https://github.com/EightMedia/sanity-plugin-osm-input#readme",
   "keywords": [
     "sanity",
     "sanity-plugin",
