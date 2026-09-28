@@ -1,0 +1,74 @@
+{
+  "name": "@eightmedia/sanity-osm-input",
+  "version": "0.1.0",
+  "description": "Sanity Studio geopoint input with OpenStreetMap tiles and place search — no Google API key",
+  "license": "MIT",
+  "type": "module",
+  "author": "EightMedia <info@eight.nl>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EightMedia/sanity-osm-input.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EightMedia/sanity-osm-input/issues"
+  },
+  "homepage": "https://github.com/EightMedia/sanity-osm-input#readme",
+  "keywords": [
+    "sanity",
+    "sanity-plugin",
+    "geopoint",
+    "openstreetmap",
+    "leaflet",
+    "osm"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm test && pnpm build"
+  },
+  "peerDependencies": {
+    "@sanity/ui": "^2.0.0 || ^3.0.0 || ^4.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "sanity": ">=3.0.0"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "@sanity/ui": "^4.2.7",
+    "@types/leaflet": "^1.9.21",
+    "@types/react": "^19.2.18",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sanity": "6.14.1",
+    "styled-components": "^6.5.3",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "packageManager": "pnpm@10.13.1"
+}
