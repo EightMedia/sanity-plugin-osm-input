@@ -17,13 +17,12 @@ section below. See [`CLAUDE.md`](./CLAUDE.md) for the workflow.
 
 ### Changed
 
-- Translated `docs/plugin.md` to English; the docs are a public-facing showcase.
-- Documented the `lang=en` choice for Photon place search.
+- Simplified and clarified the README; it is now the single source of docs.
 
 ### Removed
 
-- Dropped the stale `@sanity/ui` peer-dependency note from the README and docs;
-  the input is plain HTML.
+- Removed the `docs/` folder; the README covers install, usage, and output.
+- Dropped the stale `@sanity/ui` peer-dependency note; the input is plain HTML.
 - Dropped the unused `styled-components` devDependency (leftover from
   `@sanity/ui`).
 

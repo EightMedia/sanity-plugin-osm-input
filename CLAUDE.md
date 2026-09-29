@@ -23,10 +23,13 @@ For every meaningful change (feature, bugfix, refactor, or docs that ship):
 4. The `version` in `package.json` and the top version in `CHANGELOG.md` must
    always match. Add the release-tag link at the bottom of `CHANGELOG.md`.
 
-Before publishing, `prepublishOnly` runs `pnpm test` and `pnpm build`.
+CI (`.github/workflows/ci.yml`) and `prepublishOnly` run `pnpm check:changelog`,
+which fails when `package.json` and the top `CHANGELOG.md` version disagree — so
+a change that forgets step 1 or 2 is caught. `prepublishOnly` also runs
+`pnpm test` and `pnpm build`.
 
 ## Tone of voice
 
-README, `docs/`, and `CHANGELOG.md` are public-facing showcase material for
-Eight. Write concretely and concisely: no hollow superlatives, no filler, no
-stacked jargon. English throughout.
+The README and `CHANGELOG.md` are public-facing showcase material for Eight.
+Write concretely and concisely: no hollow superlatives, no filler, no stacked
+jargon. English throughout.

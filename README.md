@@ -1,7 +1,7 @@
 # @eightmedia/sanity-plugin-osm-input
 
 Sanity Studio input for `geopoint` fields: OpenStreetMap-based map tiles,
-Photon place search, and a draggable pin. No Google Maps API key.
+Photon place search, and a draggable pin.
 
 ## Install
 
@@ -38,7 +38,7 @@ export default defineConfig({
 })
 ```
 
-## Data shape
+## Field output
 
 Same as Sanity’s built-in geopoint:
 
@@ -48,14 +48,10 @@ Same as Sanity’s built-in geopoint:
 
 ## Map & search
 
-- **Tiles:** [OpenStreetMap France](https://www.openstreetmap.fr/) community
-  tiles (no API key). Not `tile.openstreetmap.org` (blocks apps) and not CARTO
-  (requires a key).
-- **Search:** [Photon](https://github.com/komoot/photon) (Komoot). Results are
-  requested in English (`lang=en`) so labels stay consistent for a public,
-  international package.
+- **Tiles:** [OpenStreetMap France](https://www.openstreetmap.fr/)
+- **Search:** [Photon](https://github.com/komoot/photon) (Komoot)
 
-## Develop
+## Development
 
 ```bash
 nvm use   # Node 24
