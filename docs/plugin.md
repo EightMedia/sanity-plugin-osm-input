@@ -1,19 +1,20 @@
 # @eightmedia/sanity-plugin-osm-input
 
-Sanity Studio-input voor `geopoint`-velden met OpenStreetMap-tegels, Photon
-plaatszoeken en een sleepbare pin. Geen Google Maps API-key nodig.
+Sanity Studio input for `geopoint` fields: OpenStreetMap map tiles, Photon place
+search, and a draggable pin. No Google Maps API key.
 
-## Installatie
+## Install
 
 ```bash
 pnpm add @eightmedia/sanity-plugin-osm-input
 ```
 
-Peer dependencies (meestal al aanwezig in een Sanity Studio): `sanity`,
-`react`, `react-dom`, `@sanity/ui`. Runtime dependency `leaflet` wordt met dit
-package geïnstalleerd.
+Peer dependencies (usually already present in a Sanity Studio): `sanity`,
+`react`, `react-dom`. The runtime dependency `leaflet` is installed with this
+package. No `@sanity/ui` needed — the input is plain HTML that picks up Studio
+theme colours through CSS variables.
 
-## Per-veld gebruik (aanbevolen)
+## Per-field usage (recommended)
 
 ```ts
 import { OsmGeopointInput } from '@eightmedia/sanity-plugin-osm-input'
@@ -26,7 +27,7 @@ defineField({
 })
 ```
 
-## Plugin (alle geopoint-velden)
+## Plugin (all geopoint fields)
 
 ```ts
 import { osmInput } from '@eightmedia/sanity-plugin-osm-input'
@@ -37,24 +38,26 @@ export default defineConfig({
 })
 ```
 
-De plugin registreert zich bij Sanity onder de naam `sanity-plugin-osm-input`.
+The plugin registers with Sanity under the name `sanity-plugin-osm-input`.
 
 ## Data shape
 
-Zelfde als Sanity’s ingebouwde geopoint:
+Same as Sanity’s built-in geopoint:
 
 ```ts
 { _type: 'geopoint', lat: number, lng: number }
 ```
 
-## Kaart en zoeken
+## Map & search
 
-- **Tegels:** [OpenStreetMap France](https://www.openstreetmap.fr/) community
-  tiles (geen API-key). Niet `tile.openstreetmap.org` (blokkeert apps) en niet
-  CARTO (vereist een key).
-- **Zoeken:** [Photon](https://github.com/komoot/photon) (Komoot).
+- **Tiles:** [OpenStreetMap France](https://www.openstreetmap.fr/) community
+  tiles (no API key). Not `tile.openstreetmap.org` (blocks apps) and not CARTO
+  (requires a key).
+- **Search:** [Photon](https://github.com/komoot/photon) (Komoot). Results are
+  requested in English (`lang=en`) so labels stay consistent for a public,
+  international package.
 
-## Ontwikkelen
+## Develop
 
 ```bash
 nvm use   # Node 24
@@ -63,9 +66,9 @@ pnpm test
 pnpm build
 ```
 
-## Publiceren (npmjs)
+## Publish (npmjs)
 
-Vereist write access tot de `@eightmedia` org op
+Requires write access to the `@eightmedia` org on
 [npmjs.com](https://www.npmjs.com/).
 
 ```bash
@@ -73,8 +76,8 @@ pnpm login
 pnpm publish
 ```
 
-`prepublishOnly` runt tests en build. Bump `version` in `package.json` vóór
-publiceren.
+`prepublishOnly` runs tests and build. Bump `version` in `package.json` before
+publishing.
 
 ## Repository
 

@@ -10,8 +10,9 @@ pnpm add @eightmedia/sanity-plugin-osm-input
 ```
 
 Peer dependencies (usually already present in a Sanity Studio): `sanity`,
-`react`, `react-dom`, `@sanity/ui`. Runtime dependency `leaflet` is installed
-with this package.
+`react`, `react-dom`. The runtime dependency `leaflet` is installed with this
+package. No `@sanity/ui` needed — the input is plain HTML that picks up Studio
+theme colours through CSS variables.
 
 ## Per-field usage (recommended)
 
@@ -50,7 +51,9 @@ Same as Sanity’s built-in geopoint:
 - **Tiles:** [OpenStreetMap France](https://www.openstreetmap.fr/) community
   tiles (no API key). Not `tile.openstreetmap.org` (blocks apps) and not CARTO
   (requires a key).
-- **Search:** [Photon](https://github.com/komoot/photon) (Komoot).
+- **Search:** [Photon](https://github.com/komoot/photon) (Komoot). Results are
+  requested in English (`lang=en`) so labels stay consistent for a public,
+  international package.
 
 ## Develop
 

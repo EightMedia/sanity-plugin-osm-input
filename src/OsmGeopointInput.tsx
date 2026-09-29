@@ -5,6 +5,7 @@ import {
   useRef,
   useState,
   type ChangeEvent,
+  type FocusEventHandler,
   type JSX,
 } from 'react';
 import { set, unset } from 'sanity';
@@ -23,6 +24,16 @@ export type OsmGeopointInputProps = {
   readOnly?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- avoid Sanity patch types in public .d.ts
   onChange: (patch: any) => void;
+  /**
+   * Focus/label wiring Sanity passes to every input. Forwarding `id` links the
+   * field label to the search box; `onFocus`/`onBlur` let validation focus this
+   * field. Optional so the component still works when used stand-alone.
+   */
+  elementProps?: {
+    id?: string;
+    onFocus?: FocusEventHandler<HTMLElement>;
+    onBlur?: FocusEventHandler<HTMLElement>;
+  };
 };
 
 function isGeopoint(value: unknown): value is GeopointValue {
@@ -36,10 +47,11 @@ function isGeopoint(value: unknown): value is GeopointValue {
 /**
  * Studio input for `geopoint`: OSM tiles, Photon place search, draggable pin.
  * Stores the native Sanity geopoint shape — no Google API key.
- * Uses plain HTML (no `@sanity/ui`) so it works across Sanity UI v4/v5.
+ * Uses plain HTML (no `@sanity/ui`) so it stays theme-agnostic and avoids peer
+ * version clashes; colours come from Studio CSS variables with safe fallbacks.
  */
 export function OsmGeopointInput(props: OsmGeopointInputProps): JSX.Element {
-  const { value, onChange, readOnly } = props;
+  const { value, onChange, readOnly, elementProps } = props;
   const mapId = useId();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [query, setQuery] = useState('');
@@ -135,12 +147,15 @@ export function OsmGeopointInput(props: OsmGeopointInputProps): JSX.Element {
     <div className="sanity-osm">
       <div className="sanity-osm__search">
         <input
+          id={elementProps?.id}
           className="sanity-osm__input"
           type="search"
           value={query}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             setQuery(event.currentTarget.value)
           }
+          onFocus={elementProps?.onFocus}
+          onBlur={elementProps?.onBlur}
           placeholder="Search for a place…"
           disabled={readOnly}
           aria-label="Search for a place"
