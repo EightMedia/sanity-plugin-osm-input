@@ -76,8 +76,9 @@ pnpm login
 pnpm publish
 ```
 
-`prepublishOnly` runs tests and build. Bump `version` in `package.json` before
-publishing.
+`prepublishOnly` runs tests and build. Before publishing, bump `version` in
+`package.json` (semver) and add a matching section to
+[`CHANGELOG.md`](../CHANGELOG.md).
 
 ## Repository
 
