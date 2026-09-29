@@ -7,9 +7,8 @@ const CSS = `
   gap: 0.75rem;
 }
 .sanity-osm__search {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  position: relative;
+  z-index: 1;
 }
 .sanity-osm__input {
   width: 100%;
@@ -38,6 +37,27 @@ const CSS = `
   list-style: none;
   margin: 0;
   padding: 0.25rem;
+  border: 1px solid var(--card-border-color, #ccc);
+  border-radius: 4px;
+  background: var(--card-bg-color, #fff);
+  max-height: 240px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+/* Search feedback floats over the map so the map never shifts. */
+.sanity-osm__suggestions,
+.sanity-osm__search > .sanity-osm__hint,
+.sanity-osm__search > .sanity-osm__error {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  box-sizing: border-box;
+}
+.sanity-osm__search > .sanity-osm__hint,
+.sanity-osm__search > .sanity-osm__error {
+  padding: 0.4rem 0.5rem;
   border: 1px solid var(--card-border-color, #ccc);
   border-radius: 4px;
   background: var(--card-bg-color, #fff);

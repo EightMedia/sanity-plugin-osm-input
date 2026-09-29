@@ -14,6 +14,8 @@ section below. See [`CLAUDE.md`](./CLAUDE.md) for the workflow.
 - Forward Sanity `elementProps` (`id`, `onFocus`, `onBlur`) to the input, so the
   field label links to the search box and validation can focus the field. Also
   exposed as an optional field on the public `OsmGeopointInputProps` type.
+- Float the search feedback (suggestions, status, errors) as an overlay below the
+  input, so the map no longer shifts down while typing.
 
 ### Changed
 
