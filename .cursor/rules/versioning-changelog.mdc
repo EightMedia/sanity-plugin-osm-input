@@ -1,0 +1,25 @@
+---
+description: Semver versioning and changelog workflow for this repo
+globs:
+alwaysApply: true
+---
+
+# Versioning & changelog (semver)
+
+This repo tracks changes with Semantic Versioning in a single root
+`CHANGELOG.md`, following Keep a Changelog. This supersedes any dated
+`docs/changelog/*.md` files — do not create those here. `CLAUDE.md` holds the
+full description.
+
+For every meaningful change (feature, bugfix, refactor, or docs that ship):
+
+1. Bump `version` in `package.json` per semver:
+   - MAJOR — breaking public API change (exports in `src/index.ts`). While
+     pre-1.0 (`0.x`), a breaking change bumps the minor instead.
+   - MINOR — new backwards-compatible public API or features.
+   - PATCH — bug fixes, docs, chores, internal cleanup.
+2. Add a `## [x.y.z] - YYYY-MM-DD` section at the top of `CHANGELOG.md`, using
+   Keep a Changelog groups (Added, Changed, Deprecated, Removed, Fixed, Security).
+3. Keep entries concise, concrete, and in English (public package).
+4. `package.json` version and the top `CHANGELOG.md` version must always match;
+   add the release-tag link at the bottom of `CHANGELOG.md`.

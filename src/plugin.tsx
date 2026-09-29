@@ -18,6 +18,7 @@ export const osmInput = definePlugin({
               value={props.value as GeopointValue | undefined}
               readOnly={props.readOnly}
               onChange={props.onChange}
+              elementProps={props.elementProps}
             />
           );
         }

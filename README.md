@@ -1,7 +1,7 @@
 # @eightmedia/sanity-plugin-osm-input
 
 Sanity Studio input for `geopoint` fields: OpenStreetMap-based map tiles,
-Photon place search, and a draggable pin. No Google Maps API key.
+Photon place search, and a draggable pin.
 
 ## Install
 
@@ -10,8 +10,9 @@ pnpm add @eightmedia/sanity-plugin-osm-input
 ```
 
 Peer dependencies (usually already present in a Sanity Studio): `sanity`,
-`react`, `react-dom`, `@sanity/ui`. Runtime dependency `leaflet` is installed
-with this package.
+`react`, `react-dom`. The runtime dependency `leaflet` is installed with this
+package. No `@sanity/ui` needed — the input is plain HTML that picks up Studio
+theme colours through CSS variables.
 
 ## Per-field usage (recommended)
 
@@ -37,7 +38,7 @@ export default defineConfig({
 })
 ```
 
-## Data shape
+## Field output
 
 Same as Sanity’s built-in geopoint:
 
@@ -47,12 +48,10 @@ Same as Sanity’s built-in geopoint:
 
 ## Map & search
 
-- **Tiles:** [OpenStreetMap France](https://www.openstreetmap.fr/) community
-  tiles (no API key). Not `tile.openstreetmap.org` (blocks apps) and not CARTO
-  (requires a key).
-- **Search:** [Photon](https://github.com/komoot/photon) (Komoot).
+- **Tiles:** [OpenStreetMap France](https://www.openstreetmap.fr/)
+- **Search:** [Photon](https://github.com/komoot/photon) (Komoot)
 
-## Develop
+## Development
 
 ```bash
 nvm use   # Node 24
@@ -70,5 +69,6 @@ pnpm login
 pnpm publish
 ```
 
-`prepublishOnly` runs tests and build. Bump `version` in `package.json` before
-publishing.
+`prepublishOnly` runs tests and build. Before publishing, bump `version` in
+`package.json` (semver) and add a matching section to
+[`CHANGELOG.md`](./CHANGELOG.md).

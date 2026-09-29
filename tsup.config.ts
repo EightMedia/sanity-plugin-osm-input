@@ -12,7 +12,6 @@ export default defineConfig({
     'react-dom',
     'react/jsx-runtime',
     'sanity',
-    '@sanity/ui',
     'leaflet',
     'leaflet/dist/leaflet.css',
   ],
