@@ -1,7 +1,7 @@
 {
   "name": "@eightmedia/sanity-plugin-osm-input",
-  "version": "0.2.0",
-  "description": "Sanity Studio geopoint input with OpenStreetMap tiles and place search — no Google API key",
+  "version": "0.2.1",
+  "description": "Sanity Studio geopoint input with OpenStreetMap tiles and place search",
   "license": "MIT",
   "type": "module",
   "author": "EightMedia <info@eight.nl>",
@@ -29,6 +29,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "files": [
+    "assets",
     "dist",
     "README.md",
     "CHANGELOG.md",
@@ -45,6 +46,7 @@
     "**/*.css"
   ],
   "scripts": {
+    "dev": "sanity dev",
     "build": "tsup",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
@@ -65,6 +67,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "sanity": "6.14.1",
+    "styled-components": "^6.5.3",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"

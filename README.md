@@ -3,18 +3,15 @@
 Sanity Studio input for `geopoint` fields: OpenStreetMap-based map tiles,
 Photon place search, and a draggable pin.
 
+![OSM geopoint input in Sanity Studio: place search, map pin, and coordinates](./assets/osm-geopoint-input.png)
+
 ## Install
 
 ```bash
 pnpm add @eightmedia/sanity-plugin-osm-input
 ```
 
-Peer dependencies (usually already present in a Sanity Studio): `sanity`,
-`react`, `react-dom`. The runtime dependency `leaflet` is installed with this
-package. No `@sanity/ui` needed — the input is plain HTML that picks up Studio
-theme colours through CSS variables.
-
-## Per-field usage (recommended)
+## Usage as a single field (recommended)
 
 ```ts
 import { OsmGeopointInput } from '@eightmedia/sanity-plugin-osm-input'
@@ -27,7 +24,7 @@ defineField({
 })
 ```
 
-## Plugin (all geopoint fields)
+## Usage as plugin, replacing all geopoint fields for the OSM input
 
 ```ts
 import { osmInput } from '@eightmedia/sanity-plugin-osm-input'
@@ -38,7 +35,7 @@ export default defineConfig({
 })
 ```
 
-## Field output
+## Data output
 
 Same as Sanity’s built-in geopoint:
 
@@ -60,4 +57,13 @@ nvm use   # Node 24
 pnpm install
 pnpm test
 pnpm build
+```
+
+For local development and testing, a minimal Studio
+is set up in the repo root.
+Copy `.env.example` to `.env` and fill the blanks, then run a
+studio at localhost:3333 like this:
+
+```bash
+pnpm run dev
 ```

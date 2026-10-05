@@ -7,6 +7,19 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Each meaningful change bumps the version in `package.json` and adds a matching
 section below. See [`CLAUDE.md`](./CLAUDE.md) for the workflow.
 
+## [0.2.1] - 2026-10-05
+
+### Added
+
+- Minimal local Studio playground (`pnpm dev`) with one document and one OSM
+  geopoint field, for trying the input against a real project.
+
+### Changed
+
+- Shortened the npm package description (dropped the “no Google API key” suffix).
+- README: Studio screenshot, clearer usage headings, and notes for the local
+  Studio playground.
+
 ## [0.2.0] - 2026-09-29
 
 ### Added
@@ -55,6 +68,7 @@ section below. See [`CLAUDE.md`](./CLAUDE.md) for the workflow.
 - Initial release: Sanity Studio `geopoint` input with OpenStreetMap tiles,
   Photon place search, and a draggable pin. No Google Maps API key.
 
+[0.2.1]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.2.1
 [0.2.0]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.2.0
 [0.1.1]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.1.1
 [0.1.0]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.1.0
