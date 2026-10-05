@@ -53,22 +53,11 @@ Same as Sanity’s built-in geopoint:
 
 ## Development
 
+We use pnpm, npm or yarn should also work if you update package.json.
+
 ```bash
 nvm use   # Node 24
 pnpm install
 pnpm test
 pnpm build
 ```
-
-## Publish (npmjs)
-
-Requires write access to the `@eightmedia` org on [npmjs.com](https://www.npmjs.com/).
-
-```bash
-pnpm login
-pnpm publish
-```
-
-`prepublishOnly` runs tests and build. Before publishing, bump `version` in
-`package.json` (semver) and add a matching section to
-[`CHANGELOG.md`](./CHANGELOG.md).
