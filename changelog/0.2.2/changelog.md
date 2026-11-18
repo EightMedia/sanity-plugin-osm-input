@@ -10,12 +10,13 @@
 - Dependency updates for the Studio playground and build tooling (`sanity`
   6.24.0, React 19.3.1, `styled-components` 6.6.0, `tsup` 8.5.1, `vitest`
   3.2.7, related types).
-- CI uses `EightMedia/ci-workflows` PR checks in library mode.
+- Inline GitHub Actions PR checks (public repo cannot call private
+  `EightMedia/ci-workflows`).
 
 ## Waarom
 
 - Weekly maintenance (`Fixes #3`).
-- Align CI with other EightMedia projects.
+- Keep CI green on this public package without a private reusable workflow.
 
 ## Build en tests
 

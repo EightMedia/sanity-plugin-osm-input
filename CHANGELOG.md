@@ -14,8 +14,9 @@ section below.
 - Bumped Studio playground / build tooling: `sanity` 6.14.1 → 6.24.0, React
   19.3.1, `styled-components` 6.6.0, `tsup` 8.5.1, `vitest` 3.2.7, and related
   type packages.
-- Switched CI to `EightMedia/ci-workflows` PR checks (library mode: no homepage
-  probe).
+- Adopted inline GitHub Actions PR checks (audit, build/test, version+changelog).
+  This public repo cannot call the private `EightMedia/ci-workflows` reusable
+  workflow.
 
 ## [0.2.1] - 2026-10-05
 
