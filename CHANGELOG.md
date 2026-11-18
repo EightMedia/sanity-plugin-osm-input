@@ -5,7 +5,17 @@ All notable changes to this package are documented here. The format is based on
 follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Each meaningful change bumps the version in `package.json` and adds a matching
-section below. See [`CLAUDE.md`](./CLAUDE.md) for the workflow.
+section below.
+
+## [0.2.2] - 2026-11-18
+
+### Changed
+
+- Bumped Studio playground / build tooling: `sanity` 6.14.1 → 6.24.0, React
+  19.3.1, `styled-components` 6.6.0, `tsup` 8.5.1, `vitest` 3.2.7, and related
+  type packages.
+- Switched CI to `EightMedia/ci-workflows` PR checks (library mode: no homepage
+  probe).
 
 ## [0.2.1] - 2026-10-05
 
@@ -68,6 +78,7 @@ section below. See [`CLAUDE.md`](./CLAUDE.md) for the workflow.
 - Initial release: Sanity Studio `geopoint` input with OpenStreetMap tiles,
   Photon place search, and a draggable pin. No Google Maps API key.
 
+[0.2.2]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.2.2
 [0.2.1]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.2.1
 [0.2.0]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.2.0
 [0.1.1]: https://github.com/EightMedia/sanity-plugin-osm-input/releases/tag/v0.1.1
